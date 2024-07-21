@@ -15,15 +15,12 @@
     });
 </script>
 
-
-   
-
 </head>
 
 <body class="bg-body">
 	<?php echo validation_errors(); ?>
     <div class=fix-navbar>
-		<div class=shadowbox><h3>Tour Kupi Batigo</h3></div> 
+	<div class=shadowbox><h3>Tour Kupi Batigo</h3></div>  
         <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
@@ -36,8 +33,7 @@
 				<a href="<?php echo base_url('login'); ?>"class=h7>Login</a>	
 		<?php endif; ?>	
 		</div>
-
-			
+		
 		<div class=fix-menu>
 			<nav class="navbar-expand-lg navbar-light">
 		  	<button class=" table navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -82,7 +78,7 @@
 					<a href="<?php echo base_url('register/add'); ?>">Add User</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('news/add/taluak'); ?>">Add Menu Tour</a>
+					<a href="<?php echo base_url('news/add/padang'); ?>">Add Menu Cafe</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
@@ -110,13 +106,10 @@
 		</div>
 	</div>
 
-	
-
-
 	<?php $this->load->view("header_slider");
-		  //$this->load->view('side_post');
+		  // $this->load->view('side_post');
 	?>
-	
+
 	<div class=h10> 
 		<a href="https://kopibatigo.id/">IDN</a><br>
 		<a href="#" class="fa fa-instagram"></a><br>
@@ -131,7 +124,7 @@
     <?php endif; ?>
 
    
-   <div class=container>
+   <!-- <div class=container> -->
         <div class=row>
             <div class=table-responsive>
 				<?php if ($this->session->userdata("name") === 'Alpha'):?>
@@ -174,9 +167,9 @@
 							 <?php foreach ($taluak as $index => $taluak_list): ?>
 								<td>
 									<div class="newsbox">
-										 <div class="sm-title"><a href="<?php echo site_url('taluak/view/' . $taluak_list['slug']); ?>" title="<?php echo $taluak_list['title']; ?>"><?php echo $taluak_list['title']; ?></a></div><p>
-										 <a href="<?php echo site_url('taluak/view/' . $taluak_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $taluak_list['title']; ?>"><img src= "<?php echo base_url("storage/app/public/images/logo/logo.png");?>" height="50" width="65" class=news-imgthumb ></a>
-										 <p><?php echo character_limiter($taluak_list['text'], 20); ?>
+										 <div class="md-title"><a href="<?php echo site_url('taluak/view/' . $taluak_list['slug']); ?>" title="<?php echo $taluak_list['title']; ?>"><?php echo $taluak_list['title']; ?></a></div><br>
+										 <a href="<?php echo site_url('taluak/view/' . $taluak_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $taluak_list['title']; ?>"><img src= "<?php echo base_url($taluak_list['cover']);?>" height="200" width="280" class=news-imgthumb ></a>
+										 <div class="sm-title"><?php echo character_limiter($taluak_list['text'], 5); ?></div>
 									</div>
 								</td>
 								<?php if ($index % 2 != 0): ?>
@@ -195,10 +188,7 @@
 				<?php endif; ?>
             </div>
         </div>
-    </div>
-
-	 
-
+    <!-- </div> -->
 	<br>
     <?php echo $this->pagination->create_links(); 
 	?>

@@ -13007,8 +13007,9 @@ img {
 	}
 
 .news-table {
-	width: 95%;
+	width: 96%;
 	border-collapse: collapse;
+	margin: 0 auto 0 auto;
 }
 
 	.news-table td {
@@ -13019,25 +13020,23 @@ img {
 	}
 
 		.news-table td:hover {
-			transform: scale(1.08);
+			transform: scale(1.02);
 			transition: 1s ease-in-out;
 		}
 
 		.news-table td:not(:hover) {
-			width: 25%;
+			width: 5%;
 		}
 
 
 
 .newsbox {
-	border: inset;
+	border: none;
 	border-radius: 5px;
-	box-shadow: 3px 3px lightgrey;
-	padding: 5px 5px 5px 5px;
-	width: 95%;
-	background-color: #ffffff8d;
+	padding: 5px;
+	background-color: #ffffffb5;
 	text-align: center;
-	margin: 0 auto 0 auto;
+	margin: 5px;
 	z-index: 99;
 }
 /*.newsbox:hover {
@@ -13083,7 +13082,6 @@ img {
 }
 
 .news-imgthumb {
-	float: right;
 	padding: 3px;
 	border: inset;
 	border-radius: 2px;
@@ -13326,18 +13324,39 @@ img {
 	}
 
 .sm-title {
-	max-width: 200px;
+	max-width: 250px;
+	height: 50px; /* Set a fixed height for the row */
 	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	white-space: break-spaces; /* Allow text to wrap */
+	align-items: center; /* Center text vertically */
+	text-align: center; /* Center text horizontally */
 }
 
 	.sm-title:hover {
 		width: 100%;
 		transition: ease 2s;
-		transform: scale(1.1);
+		transform: scale(1.2);
+		overflow: visible;
+	}
+
+.md-title {
+	max-width: 360px;
+	height: 100px; /* Set a fixed height for the row */
+	font-size:23px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	white-space: break-spaces; /* Allow text to wrap */
+	align-items: center; /* Center text vertically */
+	text-align: center; /* Center text horizontally */
+}
+
+	.md-title:hover {
+		width: 100%;
+		transition: ease 2s;
+		transform: scale(1.2);
 		overflow: visible;
 	}
 
@@ -13469,6 +13488,46 @@ img {
 	background: #ff6600;
 	color: white;
 }
+
+/* CSS for pagination buttons */
+.pagination {
+	display: inline-block;
+	padding: 20px 6px 0 6px;
+	margin: 20px 0 100px 8%;
+	font-size: 20px;
+	font-weight: bolder;
+	color: blue;
+}
+
+	.pagination a {
+		color: black;
+		float: left;
+		padding: 9px 17px;
+		text-decoration: none;
+		background-color: #cfd2fac9;
+		transition: background-color .3s;
+		border: 2px solid grey; /* Border around each button */
+		margin: 0 6px 0 6px; /* Space between buttons */
+		font-size: 17px;
+		border-radius: 4px; /* Rounded corners */
+	}
+
+		.pagination a:hover {
+			background-color: #ddd; /* Background color on hover */
+		}
+
+		.pagination a.active {
+			background-color: #4CAF50; /* Active button background color */
+			color: white;
+			border: 1px solid #4CAF50;
+		}
+
+		.pagination a.disabled {
+			color: #ccc; /* Disabled button color */
+			pointer-events: none; /* Prevent clicking */
+			border: 1px solid #ddd;
+		}
+
 
 
 /* ------------ end of my css for additional ------- */
