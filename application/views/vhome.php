@@ -4,7 +4,7 @@
 
 <body class="bg-body">
 	<div class=fix-navbar>
-		<div class=shadowbox><h3>Selamat Datang Di Kupi Batigo</h3></div>
+		<div class=shadowbox><h3>Welcome to Kupi Batigo</h3></div>
 		<a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
