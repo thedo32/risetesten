@@ -5,12 +5,12 @@
    <?php echo validation_errors(); ?>
 
 	 <div class=fix-navbar>
-		<div class=shadowbox><h5>User Registration</h5></div> 
+		<div class=shadowbox><h3>User Registration</h3></div> 
 
 		<a alt="Login Page" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
       	<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
-				You're Logged in' <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a>
+				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>
 				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>
 		<?php else:?> 
 				<a href="<?php echo base_url('login'); ?>"class=h7>Login</a>
@@ -28,29 +28,29 @@
 			<ul class="text-center navbar-nav mr-auto">
 			<?php if ($this->session->userdata("name") !== 'Alpha'):?>
 				<li class="nav-item">
-					<a href="<?php echo base_url(''); ?>" >Menara</a>
+					<a href="<?php echo base_url('home'); ?>">Home</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('taluak'); ?>" >Taluak Buo</a>
+					<a href="<?php echo base_url('padang'); ?>" >Cafe</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('painan'); ?>" >Painan</a>
+					<a href="<?php echo base_url('taluak'); ?>" >Tour</a>
+				</li>
+				<li class="nav-item">
+					<a href="<?php echo base_url('painan'); ?>" >Creative Space</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo base_url('Login'); ?>">Login</a>
 				</li>
 			<?php else:?>
 				<li class="nav-item">
-					<a href="<?php echo base_url(''); ?>">Menara</a>
+					<a href="<?php echo base_url('padang'); ?>" >Cafe</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('taluak'); ?>" >Taluak Buo</a>
+					<a href="<?php echo base_url('taluak'); ?>" >Tour</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('painan'); ?>" >Painan</a>
-				</li>
-				<li class="nav-item">
-					<a href="<?php echo base_url('home'); ?>">Dashboard</a>
+					<a href="<?php echo base_url('painan'); ?>" >Creative Space</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo base_url('register'); ?>">User Dashboard</a>
@@ -59,15 +59,17 @@
 					<a href="<?php echo base_url('register/add'); ?>">Add User</a>
 				</li>
 				<li class="nav-item">
-					<a href="<?php echo base_url('news/add'); ?>">Add News</a>
+					<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
 				</li>
 				<li class="nav-item">
 					<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 				</li>
 			<?php endif; ?>
+			</ul>
 			</div>
 			</nav>
 		</div>
+	</div>
 
 
 
@@ -96,4 +98,13 @@
             </tr>
         </table>
     </form>
+
+	    <br>
+
+<script>
+
+	// for expand and collapse below navbar
+	shiftBelowLTable();
+
+</script>
 	

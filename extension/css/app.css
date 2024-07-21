@@ -209,6 +209,13 @@ h6, .h6 {
 	text-align: center;
 }
 
+.h11 {
+	z-index: 181;
+	font-size: 1em;
+	float: right;
+	text-align: center;
+}
+
 p {
 	margin-top: 0;
 	margin-bottom: 1rem;
@@ -294,7 +301,6 @@ a {
 	color: var(--bs-link-color);
 	text-decoration: none;
 	padding: 0 5px 0 5px;
-	font-size: 0.9em;
 }
 
 	a:hover {
@@ -12595,7 +12601,7 @@ textarea.form-control-lg {
 
 /*additional background with image */
 .fix-menu {
-	padding: 25px 30px 5px 20px;
+	padding: 25px 30px 5px 10px;
 	font-family: "Bungee Spice", sans-serif;
 	text-align: center;
 	position: relative;
@@ -12785,6 +12791,30 @@ img {
 		font-size: small;
 	}
 
+.slideshow-container-blog {
+	max-width: 800px;
+	position: relative;
+	padding-bottom: 60px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: x-small;
+	text-align: center;
+	z-index: 99;
+}
+
+	.slideshow-container-blog:hover {
+		transition: ease 2s;
+		transform: scale(1.3);
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 30px;
+		font-size: small;
+	}
+
+
 /* Next & previous buttons */
 .prev, .next {
 	cursor: pointer;
@@ -12901,9 +12931,10 @@ img {
 }
 
 .home-table {
-	padding: 40px;
-	margin-top: 135px;
+	padding: 0 0 0 40px;
+	margin-top: 50px;
 	transition: margin-top 1.5s;
+	width: 95%;
 }
 
 .user-table {
@@ -12923,7 +12954,7 @@ img {
 	}
 
 .reg-table {
-	margin: 150px 0 0 50px;
+	margin: 180px 0 0 50px;
 	transition: margin-top 1.5s;
 }
 
@@ -12942,10 +12973,12 @@ img {
 	margin-left: 85%;
 	position: fixed;
 	font-size: 0.8rem;
+	z-index: 201;
 }
 
 .login-table {
 	margin-top: 150px;
+	margin-bottom: 75px;
 	transition: margin-top 1.5s;
 }
 
@@ -12960,6 +12993,7 @@ img {
 
 .read-table {
 	margin-top: 150px;
+	margin-bottom: 75px;
 	transition: margin-top 1.5s;
 }
 
@@ -13041,15 +13075,11 @@ img {
 }
 
 .sidepostboxsmall {
-	border: inset;
-	display: block;
-	box-shadow: 4px 4px lightgrey;
-	border-radius: 5px;
-	padding: 5px 5px 5px 5px;
-	font-size: 0.8em;
 	width: 100%;
-	background-color: #ffffff7a;
-	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	padding-bottom: 50px;
 }
 
 .news-imgthumb {
@@ -13071,7 +13101,7 @@ img {
 	font-optical-sizing: auto;
 	font-variation-settings: "MORF" 15, "SHLN" 50;
 	text-align: center;
-	margin-top: 40px;
+	margin-top: 25px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 100px;

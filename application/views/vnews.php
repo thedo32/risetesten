@@ -18,14 +18,14 @@
 				<a href="<?php echo base_url('wisata'); ?>">Desa Wisata</a>
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
 				<a href="<?php echo base_url('register/add'); ?>">Add User</a>
-				<a href="<?php echo base_url('news/add'); ?>">Add News</a>
+				<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
 				<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 			<?php else: ?>
 				<a href="<?php echo base_url(''); ?>">Home</a>
 				<a href="<?php echo base_url('taluak'); ?>">Taluak Buo</a>
 				<a href="<?php echo base_url('wisata'); ?>">Desa Wisata</a>
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
-				<a href="<?php echo base_url('news/add'); ?>">Add News</a>
+				<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
 				<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 			<?php endif; ?>
 		</div>

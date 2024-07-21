@@ -1,4 +1,7 @@
 <?php
+
+use GeoIp2\Database\Reader;
+
 class Taluak extends CI_Controller {
     
     public function __construct() {
@@ -133,6 +136,20 @@ class Taluak extends CI_Controller {
 
 		 // $this->check_login(); // Check if taluak is logged in
 
+	 // Increment hit count
+        $this->load->library('user_agent');
+        $ip_address = $this->input->ip_address();
+
+		if ($this->session->userdata("name") != Null ){
+			$user_id = $user_id = $this->session->userdata("id");
+		}else{
+			$user_id = 0;
+		}
+
+		$art_id=0;
+		$title="Tour";
+	    $this->Mtaluak->increment_hit_count($title, $user_id, $art_id, $ip_address);
+
     // Pagination configuration
 		$config['base_url'] = base_url('taluak/index');
 		$config['total_rows'] = $this->Mtaluak->get_total_taluak();
@@ -172,6 +189,34 @@ class Taluak extends CI_Controller {
         {
                 show_404();
         }
+
+		 // Increment hit count
+        $this->load->library('user_agent');
+        $ip_address = $this->input->ip_address();
+
+		if ($this->session->userdata("name") != Null ){
+			$user_id = $user_id = $this->session->userdata("id");
+		}else{
+			$user_id = 0;
+		}
+		
+		$title = $data['taluak']->title;
+	    $this->Mtaluak->increment_hit_count($title, $user_id, $data['taluak']->id, $ip_address);
+
+
+
+		// Get city and country based on IP address
+        require_once 'vendor/autoload.php';
+        $reader = new Reader('extension/db/GeoLite2-City.mmdb');
+        try {
+            $record = $reader->city($ip_address);
+            $data['city'] = $record->city->name;
+            $data['country'] = $record->country->name;
+        } catch (Exception $e) {
+            $data['city'] = 'Unknown';
+            $data['country'] = 'Unknown';
+        }
+
 
         // $data['title'] = $data['taluak_item']['title'];
 

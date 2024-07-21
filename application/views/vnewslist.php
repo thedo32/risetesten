@@ -23,9 +23,9 @@
         <a alt="News Page" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
-				You're Logged in' <a href="<?php echo base_url('home'); ?>" class=h7>Admin</a>
+				  <a href="<?php echo base_url('home'); ?>" class=h7>Admin</a>
 		<?php elseif ($this->session->userdata("name") != Null ):?>
-				You're Logged in' <a href="<?php echo base_url('home'); ?>" class=h7><?php echo $this->session->userdata("name"); ?></a>
+				  <a href="<?php echo base_url('home'); ?>" class=h7><?php echo $this->session->userdata("name"); ?></a>
 		<?php endif; ?>	
 		</div>
 		
@@ -38,12 +38,12 @@
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
 				<a href="<?php echo base_url('register'); ?>">User Dashboard</a>
 				<a href="<?php echo base_url('register/add'); ?>">Add User</a>
-				<a href="<?php echo base_url('news/add'); ?>">Add News</a>
+				<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
 				<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 			<?php else: ?>
 				<a href="<?php echo base_url(''); ?>">Home</a>
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
-				<a href="<?php echo base_url('news/add'); ?>">Add News</a>
+				<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
 				<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 			<?php endif; ?>
 		</div>
@@ -136,7 +136,7 @@
 		<div class=articlebox>		
 		Desa Wisata Teluk Buo merupakan desa wisata yang berlokasi Kelurahan Teluk Kabung Tengah, Kecamatan Bungus Teluk Kabung, Kota Padang.<br> 
 		Desa Wisata Teluk Buo ini memiliki luas area 25,64 km2.<br> 
-		Jarak Desa Wisata Teluk Buo dari kantor kelurahan ke kantor kecamatan adalah 3 kilometer, ke balai kota adalah 30 kilometer, ke kantor gubernur 25 kilometer.<br>
+		Jarak Desa Wisata Teluk Buo dari kantor kelurahan ke kantor kecamatan adalah 3 km, ke balai kota adalah 30 km, ke kantor gubernur 25 km.<br>
 		Desa Wisata Teluk Buo terkenal sebagai kawasan objek wisata bahari karena memiliki teluk indah, pantai berpasir putih, dan hutan Mangrove yang eksotis untuk dijelajahi.<br>
 		Masyarakat Teluk Buo umumnya berprofesi sebagai nelayan dan berkebun. Pantai Teluk Buo ini memiliki keindahan yang dapat membuat berdecak kagum.<br> 
 		Perpaduan pasir putih dan hijau hutan mangrove begitu sempurna, menjadi daya tarik untuk dikunjungi wisatawan.<br> 

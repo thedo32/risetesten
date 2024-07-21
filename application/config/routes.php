@@ -49,15 +49,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'padang/index';
+$route['default_controller'] = 'home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;
+
+$route['home'] = 'home/index';
 
 $route['login'] = 'login/index';
 $route['login/actionlogin'] = 'login/actionlogin';
 $route['login/logout'] = 'login/logout';
 $route['login/(:any)'] = 'view/$1';
-$route['home'] = 'home/index';
+$route['login/index'] = 'login/index';
 
 $route['register'] = 'register/index'; 
 $route['register/add'] = 'register/add';
@@ -66,29 +68,20 @@ $route['register/delete/(:num)'] = 'register/delete/$1';
 $route['register/index'] = 'register/index'; 
 
 $route['news'] = 'news/index'; 
-$route['news/add'] = 'news/add';
-$route['news/edit/(:num)'] = 'news/edit/$1'; 
-$route['news/delete/(:num)'] = 'news/delete/$1'; 
+$route['news/add/([a-z])'] = 'news/add/$1';
+$route['news/edit/([a-z])/(:num)'] = 'news/edit/$1/$2'; 
+$route['news/delete/([a-z])/(:num)'] = 'news/delete/$1/$2'; 
 $route['news/index'] = 'news/index'; 
 $route['news/view'] = 'news/view';
 
 $route['padang'] = 'padang/index'; 
-$route['padang/add'] = 'padang/add';
-$route['padang/edit/(:num)'] = 'padang/edit/$1'; 
-$route['padang/delete/(:num)'] = 'padang/delete/$1'; 
 $route['padang/index'] = 'padang/index'; 
 $route['padang/view'] = 'padang/view';
 
 $route['taluak'] = 'taluak/index'; 
-$route['taluak/add'] = 'taluak/add';
-$route['taluak/edit/(:num)'] = 'taluak/edit/$1'; 
-$route['taluak/delete/(:num)'] = 'taluak/delete/$1'; 
 $route['taluak/index'] = 'taluak/index'; 
 $route['taluak/view'] = 'taluak/view';
 
 $route['painan'] = 'painan/index'; 
-$route['painan/add'] = 'painan/add';
-$route['painan/edit/(:num)'] = 'painan/edit/$1'; 
-$route['painan/delete/(:num)'] = 'painan/delete/$1'; 
 $route['painan/index'] = 'painan/index'; 
 $route['painan/view'] = 'painan/view';

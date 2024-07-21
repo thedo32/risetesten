@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 
 	#body {
-		margin: 0px 15px 0 15px;
+		margin: 40px 120px 40px 60px;
 		min-height: 96px;
 	}
 
@@ -52,10 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="container">
 	
 	<div id="body">
-		<p>This Your Dashboard, the page is being generated dynamically by News Page</p>
+		<p>This Your Dashboard, the page is being generated dynamically by Kupi Batigo page</p>
 		
-		<p>If you would like to <strong>Add the News</strong> you'll find it located at:
-		<a href="<?php echo base_url('news/add'); ?>">Add News</a></p>
+		<p>If you would like to <strong>see the Menu</strong> you'll find it located at top section
 
 		
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds </strong></p>

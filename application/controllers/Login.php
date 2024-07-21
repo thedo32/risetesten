@@ -4,7 +4,7 @@ class Login extends CI_Controller {
     
     function __construct() {
         parent::__construct();
-        $this->load->model('mlogin'); // Ensure the mlogin model is loaded
+        $this->load->model('Mlogin'); // Ensure the Mlogin model is loaded
         $this->load->library('form_validation'); // Load form validation library
         $this->load->helper('form'); // Load form helper
         $this->load->library('session'); // Load session library
@@ -13,6 +13,7 @@ class Login extends CI_Controller {
 
 	//load index page
     function index() {
+
 		$this->load->view('view_header');
         $this->load->view('vlogin');
 		$this->load->view('view_footer');
@@ -24,20 +25,22 @@ class Login extends CI_Controller {
         $password = $this->input->post('password');
 
         // Fetch user from database
-        $user = $this->mlogin->get_user_by_username($username); // Use $this->mlogin
+        $user = $this->Mlogin->get_user_by_username($username); // Use $this->Mlogin
 
         // Verify password
         if ($user && password_verify($password, $user->password)) {
             // Set session data
             $data_session = array(
-                'name' => $username,
+				'id' => $user->id,
+				'name' => $user->name,
+                'username' => $username,
                 'status' => "login"
             );
 
             $this->session->set_userdata($data_session);
 
             //to home page
-			redirect(base_url('home'));
+			redirect(base_url(''));
 		
         } else {
             // Invalid credentials

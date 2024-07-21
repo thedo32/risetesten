@@ -17,9 +17,11 @@
 
 <body class="bg-body">
     <div class=fix-navbar>
-		<div class=shadowbox><h5>Login Page</h5></div> 
-		<a alt="Home href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
-      
+		<div class=shadowbox><h3>Login Page</h3></div> 
+		<a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
+		<div class=logged-in>
+			<a href="<?php echo base_url('register/add'); ?>"class=h7>Register</a>	
+		</div>
 
 		  <div class=fix-menu>
 			<nav class="navbar-expand-lg navbar-light">
@@ -30,35 +32,28 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="text-center navbar-nav mr-auto">
 					<li class="nav-item">
-						<a href="<?php echo base_url(''); ?>" >Menara</a>
+						<a href="<?php echo base_url('home'); ?>">Home</a>
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo base_url('taluak'); ?>" >Taluak Buo</a>
+						<a href="<?php echo base_url('padang'); ?>">Cafe</a>
 					</li>
 					<li class="nav-item">
-						<a href="<?php echo base_url('painan'); ?>" >Painan</a>
+						<a href="<?php echo base_url('taluak'); ?>" >Tour</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?php echo base_url('painan'); ?>" >Creative Space</a>
 					</li>
 					<li class="nav-item">
 						<a href="<?php echo base_url('register/add'); ?>">Register</a>
 					</li>
-				</div>
+				</ul>
+			</div>
 			</nav>
 		</div>
 	</div>
 	
 
-    <!-- notification if login error -->
-    <?php if ($this->session->tempdata('error_login')): ?>
-		<p id="addeditSuccessMessage" style="color: red;"><?php echo $this->session->tempdata('error_login'); ?></p>
-    <?php endif; 
-
-		if ($this->session->tempdata('email_sent')): ?>
-    <p style="color: green;"><?php echo $this->session->tempdata('email_sent'); ?></p>
-    <?php elseif ($this->session->tempdata('email_failed')): ?>
-    <p style="color: green;"><?php echo $this->session->tempdata('email_failed'); ?></p>
-    <?php endif; ?>
-
-
+ 
     <form action="<?php echo base_url('login/actionlogin'); ?>" method="post">
 
         <table class=login-table>
@@ -92,7 +87,18 @@
         </table>
 
     </form>
-    <br>
+    
+	<!-- notification if login error -->
+    <?php if ($this->session->tempdata('error_login')): ?>
+		<p id="addeditSuccessMessage" style="color: red;"><?php echo $this->session->tempdata('error_login'); ?></p>
+    <?php endif; 
+
+	if ($this->session->tempdata('email_sent')): ?>
+		<p id="addeditSuccessMessage" style="color: green;"><?php echo $this->session->tempdata('email_sent'); ?></p>
+    <?php elseif ($this->session->tempdata('email_failed')): ?>
+		<p id="addeditSuccessMessage" style="color: green;"><?php echo $this->session->tempdata('email_failed'); ?></p>
+    <?php endif; ?>
+	<br><br>
 
 <script>
 

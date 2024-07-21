@@ -3,13 +3,13 @@ class News extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
-        $this->load->model('Mnews');
-        $this->load->library('pagination');
-		$this->load->helper('url');
+        $this->load->model(array('Mnews','Mpadang','Mtaluak', 'Mpainan'));
+	    $this->load->library('pagination');
+		$this->load->helper(array('form', 'url', 'text'));
 
 		$this->load->library('form_validation'); // Load form validation library
-        $this->load->helper('form'); // Load form helper
-		$this->load->helper('text'); // Load text helper
+       
+      
     }
 
 
@@ -22,7 +22,7 @@ class News extends CI_Controller {
 	*/
 
 
-    public function add() {
+    public function add($menu) {
         // Check if form submitted
 		 
       if ($this->input->post()) {
@@ -34,22 +34,72 @@ class News extends CI_Controller {
             if ($this->form_validation->run() == TRUE) {
                 // Get form data
 
-				$slug = url_title($this->input->post('title'), 'dash', TRUE);
-                $data = array(
-                    'title' => $this->input->post('title'),
-                    'slug' => $slug,
-                    'text' => $this->input->post('text')
-                );
+				$config['upload_path'] = './storage/app/public/images/blog/';
+				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
+				$config['max_size'] = 1024; // 1MB
+				$config['max_width'] = 2048;
+				$config['max_height'] = 1536;
 
-                // Add news to database
-                $this->Mnews->add_news($data);
+				$this->load->library('upload', $config);
 
-				// temporary notification after add success
-				$this->session->set_tempdata('add_success','Berita baru berhasil ditambahkan', 15);
+				if (!$this->upload->do_upload('cover')) {
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_tempdata('add_success',$error['error'], 15);
 
-                // Redirect to user list page
-                redirect('news/index');
-				
+					 if ($menu === "padang"){
+    					redirect('padang/index');
+					}elseif ($menu === "taluak"){
+						redirect('taluak/index');
+					}elseif ($menu === "painan"){
+						redirect('painan/index');
+					}else{
+						// Redirect to news list page
+						redirect('news/index');
+					}
+
+				} else {
+					$upload_data = $this->upload->data();
+					$cover_path = '/storage/app/public/images/blog/' . $upload_data['file_name'];
+
+					$slug = url_title($this->input->post('title'), 'dash', TRUE);
+					$data = array(
+						'title' => $this->input->post('title'),
+						'slug' => $slug,
+						'text' => $this->input->post('text'),
+						'cover'=> $cover_path,
+						'created_at' => date('Y-m-d H:i:s'),
+						'user_id' => 1
+					);
+
+					if ($menu === "padang"){
+    				// Add kafe in database
+					$this->Mpadang->add_padang($data);
+					}elseif ($menu === "taluak"){
+						// add wisata in database
+						$this->Mtaluak->add_taluak($data);
+					}elseif ($menu === "painan"){
+						// add creative space in database
+						$this->Mpainan->add_painan($data);
+					}else{
+						// add news from database
+						$this->Mnews->add_news($data);
+					}
+					// temporary notification after add success
+					$this->session->set_tempdata('add_success','Berita baru berhasil ditambahkan', 15);
+
+					 if ($menu === "padang"){
+    					redirect('padang/index');
+					}elseif ($menu === "taluak"){
+						redirect('taluak/index');
+					}elseif ($menu === "painan"){
+						redirect('painan/index');
+					}else{
+						// Redirect to news list page
+						redirect('news/index');
+					}
+
+				}				
+												
             }
         }
 
@@ -59,14 +109,22 @@ class News extends CI_Controller {
 		$this->load->view('view_footer');
     }
 
-    public function edit($id) {
+    public function edit($menu,$id) {
     // Check if user id is provided
     if (!$id) {
         show_404();
     }
 
+	if ($menu === "padang"){
     // Get news data by id
-    $news = $this->Mnews->get_news($id);
+		$news = $this->Mpadang->get_padang($id);
+	}elseif ($menu === "taluak"){
+		$news = $this->Mtaluak->get_taluak($id);
+	}elseif ($menu === "painan"){
+		$news = $this->Mpainan->get_painan($id);
+	}else{
+		$news = $this->Mnews->get_news($id);
+	}
 
     // If news not found
     if (!$news) {
@@ -88,22 +146,103 @@ class News extends CI_Controller {
 
         if ($this->form_validation->run() == TRUE) {
             // Get form data
-			$slug = url_title($this->input->post('title'), 'dash', TRUE);
-            $data = array(
-                'title' => $this->input->post('title'),
-                'slug' => $slug,
-				'text' => $this->input->post('text')
-            );
+				$config['upload_path'] = './storage/app/public/images/blog/';
+				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
+				$config['max_size'] = 1024; // 1MB
+				$config['max_width'] = 2048;
+				$config['max_height'] = 1536;
 
-            // Update news in database
-            $this->Mnews->edit_news($id, $data);
+				$this->load->library('upload', $config);
 
-			// temporary notification after edit success
-				$this->session->set_tempdata('edit_success','Berita berhasil diupdate', 15);
+				if (!$this->upload->do_upload('cover')) {
+					//$error = array('error' => $this->upload->display_errors());
+					//$this->session->set_tempdata('add_success',$error['error'], 15);
 
-            // Redirect to news list page
-            redirect('news/index');
-        }
+					$slug = url_title($this->input->post('title'), 'dash', TRUE);
+					$data = array(
+						'title' => $this->input->post('title'),
+						'slug' => $slug,
+						'text' => $this->input->post('text'),
+						'updated_at' => date('Y-m-d H:i:s')
+					);
+
+					if ($menu === "padang"){
+    					// Update kafe in database
+						$this->Mpadang->edit_padang($id, $data);
+					}elseif ($menu === "taluak"){
+						// Update wisata in database
+						$this->Mtaluak->edit_taluak($id, $data);
+					}elseif ($menu === "painan"){
+						// Update creative space in database
+						$this->Mpainan->edit_painan($id, $data);
+					}else{
+						// Update news in database
+						$this->Mnews->edit_news($id, $data);
+					}
+					          
+
+					// temporary notification after edit success
+					$this->session->set_tempdata('edit_success','Berita berhasil diupdate', 15);
+
+
+
+					if ($menu === "padang"){
+    					redirect('padang/index');
+					}elseif ($menu === "taluak"){
+						redirect('taluak/index');
+					}elseif ($menu === "painan"){
+						redirect('painan/index');
+					}else{
+						// Redirect to news list page
+						redirect('news/index');
+					}
+
+				} else {
+					$upload_data = $this->upload->data();
+					
+					$cover_path = '/storage/app/public/images/blog/' . $upload_data['file_name'];
+
+					$slug = url_title($this->input->post('title'), 'dash', TRUE);
+					$data = array(
+						'title' => $this->input->post('title'),
+						'slug' => $slug,
+						'text' => $this->input->post('text'),
+						'cover'=> $cover_path,
+						'updated_at' => date('Y-m-d H:i:s')
+					);
+
+					if ($menu === "padang"){
+    					// Update kafe in database
+						$this->Mpadang->edit_padang($id, $data);
+					}elseif ($menu === "taluak"){
+						// Update wisata in database
+						$this->Mtaluak->edit_taluak($id, $data);
+					}elseif ($menu === "painan"){
+						// Update creative space in database
+						$this->Mpainan->edit_painan($id, $data);
+					}else{
+						// Update news in database
+						$this->Mnews->edit_news($id, $data);
+					}
+
+          
+
+					// temporary notification after edit success
+					$this->session->set_tempdata('edit_success','Berita berhasil diupdate', 15);
+
+					if ($menu === "padang"){
+    					redirect('padang/index');
+					}elseif ($menu === "taluak"){
+						redirect('taluak/index');
+					}elseif ($menu === "painan"){
+						redirect('painan/index');
+					}else{
+						// Redirect to news list page
+						redirect('news/index');
+					}
+				}
+			
+		}
     }
 
     // Pass news data to view
@@ -116,17 +255,39 @@ class News extends CI_Controller {
 }
 
 
-    public function delete($id) {
+    public function delete($menu, $id) {
         // Check if news id is provided
         if (!$id) {
             show_404();
         }
 
-        // Delete news from database
-        $this->Mnews->delete_news($id);
 
-        // Redirect to news list page
-        redirect('news/index');
+		if ($menu === "padang"){
+    		// Delete kafe in database
+			$this->Mpadang->delete_padang($id);
+		}elseif ($menu === "taluak"){
+			// delete wisata in database
+			$this->Mtaluak->delete_taluak($id);
+		}elseif ($menu === "painan"){
+			// delete creative space in database
+			$this->Mpainan->delete_painan($id);
+		}else{
+			// Delete news from database
+			$this->Mnews->delete_news($id);
+		}
+
+       
+
+		if ($menu === "padang"){
+    		redirect('padang/index');
+		}elseif ($menu === "taluak"){
+			redirect('taluak/index');
+		}elseif ($menu === "painan"){
+			redirect('painan/index');
+		}else{
+			// Redirect to news list page
+			redirect('news/index');
+		}
     }
 
     public function index() {

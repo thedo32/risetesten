@@ -24,10 +24,10 @@
         <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
-				You're Logged in' <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a>
+				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a>
 				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>
 		<?php elseif ($this->session->userdata("name") != Null ):?>
-				You're Logged in' <a href="<?php echo base_url('home'); ?>" class=h8><?php echo $this->session->userdata("name"); ?></a>
+				  <a href="<?php echo base_url('home'); ?>" class=h8><?php echo $this->session->userdata("name"); ?></a>
 				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>
 		<?php else:?> 
 				<a href="<?php echo base_url('login'); ?>"class=h7>Login</a>

@@ -1,4 +1,5 @@
 <?php
+
 class Muser extends CI_Model {
 
     public function __construct() {
@@ -48,6 +49,5 @@ class Muser extends CI_Model {
         $query = $this->db->get('users');
         return $query->row(); // Return the row as an object
     }
-
 
 }

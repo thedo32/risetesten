@@ -26,10 +26,13 @@ class Register extends CI_Controller {
         // Check if form submitted
         if ($this->input->post()) {
             // Form validation rules
+			$this->form_validation->set_rules('name', 'Nama', 'required|min_length[4]|max_length[100]');
             $this->form_validation->set_rules('username', 'Username', 
 												'required|is_unique[users.username]|min_length[4]|max_length[20]|alpha_numeric', 
 												'callback_username_check');
-			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
+			$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]|valid_email');
+			$this->form_validation->set_rules('mobile', 'Mobile', 'required|is_unique[users.mobile]|min_length[10]|max_length[20]');
+			$this->form_validation->set_rules('address', 'Address', 'required|min_length[10]|max_length[254]');
             $this->form_validation->set_rules('password', 'Password', 
 											  'trim|required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/]');
 			$this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]');
@@ -40,8 +43,11 @@ class Register extends CI_Controller {
 				
 			
                 $data = array(
+					'name' => $this->input->post('name'),
                     'username' => $this->input->post('username'),
                     'email' => $this->input->post('email'),
+					'mobile' => $this->input->post('mobile'),
+					'address' => $this->input->post('address'),
                     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
                 );
 
@@ -50,25 +56,29 @@ class Register extends CI_Controller {
 
 				//sending email for notification
 				
-				$this->email->from('jeffriargon@gmail.com', 'jeffriargon@gmail.com');
+				/* $this->email->from('jeffriargon@gmail.com', 'jeffriargon@gmail.com');
 				$this->email->to($this->input->post('email'));
 				
 				$this->email->subject('Email Test');
-				$this->email->message('Testing the email for registration.');
+				$this->email->message('Testing the email for registration.'); */
 
 			
 
 				if ($this->email->send()): 
 					// temporary notification after send 
-					$this->session->set_tempdata('email_sent','Email untuk verifikasi user berhasil dikirimkan', 15);
+					$this->session->set_tempdata('email_sent','Email untuk verifikasi user berhasil dikirimkan. Silahkan Login', 15);
 				else: 
 					// temporary notification after send fail
-					$this->session->set_tempdata('email_failed','Email untuk verifikasi user masih terkendala untuk dikirimkan', 15);
+					$this->session->set_tempdata('email_failed','Untuk Sementara, Email untuk verifikasi user masih terkendala untuk dikirimkan. Silahkan Login', 15);
 				endif;
 								
-								
-                // Redirect to user list page
-				redirect('register/index');
+				if ($this->session->userdata("name") === 'Alpha'){
+					// Redirect to user list page
+					redirect('register');
+				}else{
+					redirect('login');
+				}				
+                
 								
 				
             }
@@ -82,8 +92,7 @@ class Register extends CI_Controller {
 		$this->load->view('view_footer');
     }
 
-	public function username_check($str)
-        {
+	public function username_check($str){
 			 	
 		   if ($str == 'test')
            {
@@ -94,25 +103,27 @@ class Register extends CI_Controller {
            {
                 return TRUE;
 		   }
-        }
+    }
 
     public function edit($id) {
-    // Check if user id is provided
-    if (!$id) {
+		// Check if user id is provided
+		if (!$id) {
         show_404();
-    }
+		}
 
-    // Get user data by id
-    $user = $this->Muser->get_user($id);
+		// Get user data by id
+		$user = $this->Muser->get_user($id);
 
-    // If user not found
-    if (!$user) {
-        show_404();
-    }
+		// If user not found
+		if (!$user) {
+			show_404();
+		}
 
     // Check if form submitted
     if ($this->input->post()) {
         // Form validation rules
+			$this->form_validation->set_rules('name', 'Name', 'required|min_length[4]|max_length[100]');
+            
 			if ($this->input->post('username') === $user->username || $this->input->post('username') === "Alpha" ): 
 				$this->form_validation->set_rules('username', 'Username', 
 												'required|min_length[4]|max_length[20]|alpha_numeric', 
@@ -121,13 +132,21 @@ class Register extends CI_Controller {
 				$this->form_validation->set_rules('username', 'Username', 
 												'required|is_unique[users.username]|min_length[4]|max_length[20]|alpha_numeric', 
 												'callback_username_check');
-			endif;									
-
+			endif;
+			
 			if ($this->input->post('username') === $user->username || $this->input->post('username') === "Alpha"  ): 
 				$this->form_validation->set_rules('email', 'Email', 'required');
 			else:
 				$this->form_validation->set_rules('email', 'Email', 'required|is_unique[users.email]');
-			endif;	
+			endif;
+			
+			if ($this->input->post('username') === $user->username || $this->input->post('username') === "Alpha"  ): 
+				$this->form_validation->set_rules('mobile', 'Mobile', 'required');
+			else:
+				$this->form_validation->set_rules('mobile', 'Mobile', 'required|is_unique[users.mobile]|min_length[10]|max_length[20]');
+			endif;
+			
+			$this->form_validation->set_rules('address', 'Address', 'required|min_length[10]|max_length[254]');
 
             $this->form_validation->set_rules('password', 'Password', 
 											  'trim|required|min_length[8]|regex_match[/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/]');
@@ -137,8 +156,11 @@ class Register extends CI_Controller {
         if ($this->form_validation->run() == TRUE) {
             // Get form data
             $data = array(
+				'name' => $this->input->post('name'),
                 'username' => $this->input->post('username'),
                 'email' => $this->input->post('email'),
+				'mobile' => $this->input->post('mobile'),
+				'address' => $this->input->post('address'),
 				'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
             );
 

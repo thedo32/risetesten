@@ -1,8 +1,24 @@
+	<?php if ($this->session->userdata("name") === Null):
+		$name = "Guest";
+	else:
+		$name = $this->session->userdata("name");
+	endif; 
+	
+	
+	$whatsappLink = "https://wa.me/628994659530?text=" . urlencode("Hello Kupi Batigo, i am $name, interested in asking for more details");
+
+	?>
+
+
+
+
 <div class=post-container-1>
-		<p><p><br><div class=h9>Contact Person</div>
+		<p><p><br><div class=h9>Contact Person:</div>
 </div>
 <div class=post-container-2>
-		<div class=sidepostboxsmall> Khairul Mahmud <br>Zulkifli Wahab <br>08116611991 <br>pokdarwistb@gmail.com<br>fb: wisata_teluk buo<br>ig: desa_wisata_telukbuo<br></div>
+		<div class=sidepostboxsmall> <a href="<?php echo $whatsappLink; ?>" target=_blank>
+			<img src="/storage/app/public/images/logo/walogo.png" alt="Cover Image">
+		</a></div><br><br>
 </div>
 <div class=post-container-3>
 	<iframe width="620" height="240" src="https://www.youtube.com/embed/mB-BYM-Rl9w?si=cgVjgHwlnjSv3lxR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
