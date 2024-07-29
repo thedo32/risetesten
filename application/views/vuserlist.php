@@ -20,7 +20,7 @@
 <body class=bg-body>
     <div class=fix-navbar>
 		<div class=shadowbox><h3>User List</h3></div>
-        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
+        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		<div class=logged-in>
 				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>
 				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>

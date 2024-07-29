@@ -16,7 +16,7 @@
 	
     <div class=fix-navbar>
 		<div class=shadowbox><h3>Add News</h3></div>
-        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
+        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		
 		<div class=fix-menu>
 		<nav class="navbar-expand-lg navbar-light">
@@ -83,5 +83,6 @@
         </tr>
     </table>
 </form>
+
 <?php echo validation_errors(); ?>
 <br><br>

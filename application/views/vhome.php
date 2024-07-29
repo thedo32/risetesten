@@ -5,7 +5,7 @@
 <body class="bg-body">
 	<div class=fix-navbar>
 		<div class=shadowbox><h3>Welcome to Kupi Batigo</h3></div>
-		<a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "128" height = "55"></a>
+		<a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
 				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>
@@ -90,7 +90,6 @@
 			</nav>
 		</div>
 	</div>
-
 	
 	<?php $this->load->view("header_slider");
 		  // $this->load->view('side_post');
@@ -151,8 +150,8 @@
 		$this->load->view('post_container');
 	?>
 
-
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Ûp</button>
+	<br><br>
 
     <script>
 		// for go to top button

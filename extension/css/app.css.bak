@@ -13614,8 +13614,8 @@ body {
 	border:none;
 	border-radius:5px 5px 5px 5px;
 	background-color:#00000087;
-	top: -2px;
-	right: 2px;
+	top: -5px;
+	right: 10px;
 	font-size: 20px;
 	font-weight: bold;
 	color: white;

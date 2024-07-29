@@ -1,5 +1,5 @@
 <!-- slider dari BarajaCoding -->
-
+<br>
 <div class="slideshow-container">	
 	<div class="mySlides fade">
 		<a alt="Menara" href="<?php echo base_url('');?>"><img src="<?php echo base_url ("/storage/app/public/images/slider/1.png");?>" style="width:80%"></a>

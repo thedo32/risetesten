@@ -36,7 +36,7 @@ class News extends CI_Controller {
 
 				$config['upload_path'] = './storage/app/public/images/blog/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
-				$config['max_size'] = 1024; // 1MB
+				$config['max_size'] = 2048; // 2MB
 				$config['max_width'] = 2048;
 				$config['max_height'] = 1536;
 
@@ -148,7 +148,7 @@ class News extends CI_Controller {
             // Get form data
 				$config['upload_path'] = './storage/app/public/images/blog/';
 				$config['allowed_types'] = 'gif|jpg|jpeg|png|heic|webp';
-				$config['max_size'] = 1024; // 1MB
+				$config['max_size'] = 2048; // 2MB
 				$config['max_width'] = 2048;
 				$config['max_height'] = 1536;
 
@@ -157,6 +157,7 @@ class News extends CI_Controller {
 				if (!$this->upload->do_upload('cover')) {
 					//$error = array('error' => $this->upload->display_errors());
 					//$this->session->set_tempdata('add_success',$error['error'], 15);
+
 
 					$slug = url_title($this->input->post('title'), 'dash', TRUE);
 					$data = array(
@@ -199,7 +200,6 @@ class News extends CI_Controller {
 
 				} else {
 					$upload_data = $this->upload->data();
-					
 					$cover_path = '/storage/app/public/images/blog/' . $upload_data['file_name'];
 
 					$slug = url_title($this->input->post('title'), 'dash', TRUE);

@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 		<p>Welcome, page dynamically created by Kupi Batigo web page</p>
 
-		<p>If you would like to <strong>see the Menu</strong> you'll find it located at top section</p>
+		<p>If you would like to <strong>see the Menu</strong> you'll find it located at top section (<strong>&equiv; button</strong>)</p>
 
 		<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds </strong></p>
 </div>
