@@ -12713,7 +12713,7 @@ textarea.form-control-lg {
 
 
 .bg-body {
-	background-image: url('/storage/app/public/images/bg/bgbody6.webp');
+	background-image: url('/storage/app/public/images/bg/bodybg.jpg');
 	background-attachment: scroll;
 }
 
@@ -13644,7 +13644,7 @@ body {
 	border-radius:5px 5px 5px 5px;
 	background-color:#00000087;
 	top: 80px;
-	right: 10px;
+	right: 15px;
 	font-size: 25px;
 	font-weight: bold;
 	color: white;
