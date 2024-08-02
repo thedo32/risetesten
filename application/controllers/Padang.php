@@ -6,6 +6,7 @@ class Padang extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
+		 $this->load->model('Mhome');
         $this->load->model('Mpadang');
         $this->load->library('pagination');
 		$this->load->helper('url');
@@ -139,16 +140,21 @@ class Padang extends CI_Controller {
 		 // Increment hit count
         $this->load->library('user_agent');
         $ip_address = $this->input->ip_address();
+        $referrer = $this->input->server('HTTP_REFERER');
 
-		if ($this->session->userdata("name") != Null ){
-			$user_id = $user_id = $this->session->userdata("id");
-		}else{
-			$user_id = 0;
-		}
+		$utm_params = array(
+            'utm_source' => $this->input->get('utm_source'),
+            'utm_medium' => $this->input->get('utm_medium'),
+            'utm_campaign' => $this->input->get('utm_campaign'),
+            'utm_term' => $this->input->get('utm_term'),
+            'utm_content' => $this->input->get('utm_content')
+        );
 
-		$art_id=0;
-		$title="Cafe";
-	    $this->Mpadang->increment_hit_count($title, $user_id, $art_id, $ip_address);
+        $user_id = $this->session->userdata("name") != null ? $this->session->userdata("id") : 0;
+
+        $art_id = 0;
+        $title = "Cafe";
+        $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params);
 
 
     // Pagination configuration
@@ -194,16 +200,21 @@ class Padang extends CI_Controller {
 		 // Increment hit count
         $this->load->library('user_agent');
         $ip_address = $this->input->ip_address();
+        $referrer = $this->input->server('HTTP_REFERER');
 
-		if ($this->session->userdata("name") != Null ){
-			$user_id = $user_id = $this->session->userdata("id");
-		}else{
-			$user_id = 0;
-		}
-		
-		$title=$data['padang']->title;
-	    $this->Mpadang->increment_hit_count($title, $user_id, $data['padang']->id, $ip_address);
+		$utm_params = array(
+            'utm_source' => $this->input->get('utm_source'),
+            'utm_medium' => $this->input->get('utm_medium'),
+            'utm_campaign' => $this->input->get('utm_campaign'),
+            'utm_term' => $this->input->get('utm_term'),
+            'utm_content' => $this->input->get('utm_content')
+        );
 
+        $user_id = $this->session->userdata("name") != null ? $this->session->userdata("id") : 0;
+
+        $title=$data['padang']->title;
+		$id=$data['padang']->id;
+        $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params);
 
 
 		// Get city and country based on IP address

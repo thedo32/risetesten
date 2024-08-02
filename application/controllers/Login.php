@@ -39,14 +39,20 @@ class Login extends CI_Controller {
 
             $this->session->set_userdata($data_session);
 
+	
+			// Update user's session_id in the database
+				$this->db->where('id', $user->id);
+				$this->db->update('users', array('session_id' => session_id()));
+
             //to home page
-			redirect(base_url(''));
+			redirect(base_url('home'));
 		
         } else {
             // Invalid credentials
 			$this->session->set_tempdata('error_login', 'Invalid username or password, Login again or register');
 			
-			
+			$this->session->sess_destroy();
+
             //to login page
 			$this->load->view('view_header');
 			$this->load->view('vlogin');

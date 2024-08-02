@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 @charset "UTF-8";
 /*!
 * Start Bootstrap - Shop Homepage v5.0.6 (https://startbootstrap.com/template/shop-homepage)
@@ -181,11 +182,19 @@ h6, .h6 {
 	font-size: 1.3em;
 }
 
+	.h7:hover {	
+		text-decoration: none;
+	}
+
 .h8 {
 	z-index: 99;
 	font-family: "Nanito", sans-serif;
 	font-size: 0.8em;
 }
+
+	.h8:hover {
+		text-decoration: none;
+	}
 
 .h9 {
 	z-index: 99;
@@ -197,6 +206,10 @@ h6, .h6 {
 	font-size: 1.1em;
 }
 
+	.h9:hover {
+		text-decoration: none;
+	}
+
 .h10 {
 	z-index: 180;
 	font-family: 'Nanito',sans-serif;
@@ -207,6 +220,9 @@ h6, .h6 {
 	float: right;
 	text-align: center;
 }
+	.h10:hover {
+		text-decoration: none;
+	}
 
 .h11 {
 	z-index: 181;
@@ -214,12 +230,19 @@ h6, .h6 {
 	float: right;
 	text-align: center;
 }
+	.h11:hover {
+		text-decoration: none;
+	}
 
 .h12 {
 	z-index:1002;
-	font-family: 'Honk',sans-serif;
-	font-size: 2.5em;
+	font-family: 'Noto Serif',sans-serif;
+	font-size: 2.1em;
+	text-decoration:none;
 }
+	.h12:hover {
+		text-decoration: none;
+	}
 
 p {
 	margin-top: 0;
@@ -308,19 +331,21 @@ a {
 	padding: 0 5px 0 5px;
 	z-index:2000;
 }
-
+	
 	a:hover {
 		color: var(--bs-link-hover-color);
 		font-weight: bold;
+		text-decoration: none;
 	}
 
 	a:visited {
 		color: --bs-code-color: #d63384;
-		text-decoration: wavy;
+		text-decoration: none;
 	}
 
 		a:active, a:visited:active {
 			color: var(--bs-link-hover-color);
+			text-decoration: none;
 		}
 
 	a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -12688,7 +12713,7 @@ textarea.form-control-lg {
 
 
 .bg-body {
-	background-image: url('/storage/app/public/images/bg/bgbody6.webp');
+	background-image: url('/storage/app/public/images/bg/bodybg.jpg');
 	background-attachment: scroll;
 }
 
@@ -12741,11 +12766,13 @@ img {
 	display: none;
 	opacity: 0;
 	transition: ease 0.5s;
+	text-decoration: none;
 }
 
-	.mySlidesPop img{
+	.mySlidesPop img {
 		display: block;
 		margin: auto;
+		text-decoration: none;
 	}
 
 .slideshow-container {
@@ -12789,6 +12816,7 @@ img {
 	font-size: 0.7em;
 	text-align: center;
 	z-index: 98;
+	text-decoration: none;
 }
 
 .slideshow-container-art {
@@ -13588,11 +13616,11 @@ body {
 	position: fixed;
 	z-index: 1001;
 	left: 0;
-	top: 80px;
+	top: 85px;
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background-color: rgba(0, 0, 0, 0.75)
+	background-color: rgba(255, 255, 255, 0.8)
 }
 
 .popup-content {
@@ -13609,17 +13637,19 @@ body {
 		height: auto;
 	}
 
+
 .close-button {
 	position: fixed;
 	border:none;
 	border-radius:5px 5px 5px 5px;
 	background-color:#00000087;
-	top: -2px;
-	right: 2px;
-	font-size: 20px;
+	top: 80px;
+	right: 15px;
+	font-size: 25px;
 	font-weight: bold;
 	color: white;
 	cursor: pointer;
+	padding:0 5px 2px 5px;
 }
 
 	.close-button:hover,

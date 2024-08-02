@@ -92,14 +92,14 @@
 	</div>
 
 	<?php if ($this->session->userdata("name") === Null):
-		$name = "Tamu";
+		$name = " ";
 	else:
 		$name = $this->session->userdata("name");
 	endif; 
 	
 	$pesanan = $painan->title;
 
-		$whatsappLink = "https://wa.me/628994659530?text=" . urlencode("Hello Kupi Batigo, i am $name, interested in ordering $pesanan");
+		$whatsappLink = "https://wa.me/62811663504?text=" . urlencode("Hello Kupi Batigo, I am $name interested in ordering $pesanan");
 	?>
 
 	<div class=h11>

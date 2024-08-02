@@ -25,8 +25,8 @@ class Mhome extends CI_Model {
 
             try {
                 $record = $reader->city($ip_address);
-                $city = $record->city->name ?? 'Unknown';
-                $country = $record->country->name ?? 'Unknown';
+                $city = $record->city->name;
+                $country = $record->country->name;
             } catch (Exception $e) {
                 $city = 'Unknown';
                 $country = 'Unknown';
@@ -50,7 +50,6 @@ class Mhome extends CI_Model {
             );
 
             $this->db->insert('hits', $data);
-
 
 		    // Increment the hit count in the painan table
             //$this->db->where('id', $id);

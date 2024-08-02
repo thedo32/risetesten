@@ -25,19 +25,23 @@ use GeoIp2\Database\Reader;
 		// Increment hit count
         $this->load->library('user_agent');
         $ip_address = $this->input->ip_address();
+        $referrer = $this->input->server('HTTP_REFERER');
 
-		if ($this->session->userdata("name") != Null ){
-			$user_id = $user_id = $this->session->userdata("id");
-		}else{
-			$user_id = 0;
-		}
+		$utm_params = array(
+            'utm_source' => $this->input->get('utm_source'),
+            'utm_medium' => $this->input->get('utm_medium'),
+            'utm_campaign' => $this->input->get('utm_campaign'),
+            'utm_term' => $this->input->get('utm_term'),
+            'utm_content' => $this->input->get('utm_content')
+        );
 
-		$art_id=0;
-		$title="Home Eng";
-	    $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address);
+        $user_id = $this->session->userdata("name") != null ? $this->session->userdata("id") : 0;
 
+        $art_id = 0;
+        $title = "Home Eng";
+        $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params);
 
-
+		//load the view page
 		$this->load->view('view_header');
 		$this->load->view('vhome');
 		$this->load->view('view_footer');

@@ -96,7 +96,7 @@
 	?>
 
 	<div class=h10> 
-		<a href="https://kopibatigo.id/">IDN</a><br>
+		<a href="https://kopibatigo.id/home">IDN</a><br>
 		<a href="#" class="fa fa-instagram"></a><br>
 		<a href="#" class="fa fa-facebook"></a><br>
 	</div>
