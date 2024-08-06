@@ -13107,9 +13107,9 @@ img {
 
 .newsbox {
 	border: none;
-	border-radius: 10px;
-	padding: 5px;
-	background-color: #ffffff6a;
+	border-radius: 15px;
+	padding: 2px;
+	background-color: #ffffffe2;
 	text-align: center;
 	margin: 5px;
 	z-index: 99;
@@ -13125,10 +13125,9 @@ img {
 		}*/
 
 .articlebox {
-	border: inset;
+	border:none;
 	display: block;
-	border-radius: 5px;
-	box-shadow: 3px 3px lightgrey;
+	border-radius: 10px;
 	padding: 5px 5px 5px 5px;
 	width: 80%;
 	background-color: #ffffff;
@@ -13144,7 +13143,7 @@ img {
 	border-radius: 5px;
 	padding: 5px 5px 5px 5px;
 	width: 90%;
-	background-color: #ffffff5a;
+	background-color: #ffffffe2;
 	text-align: left;
 }
 
