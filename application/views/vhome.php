@@ -140,7 +140,7 @@
 		<strong>How to get there:</strong><br>
 		Desa Wisata Teluk Buo is located about 30 kilometers from the center of Padang City, accessible by public transportation or by renting a car.<br>
 		<strong>Accommodation:</strong><br>
-		There are several homestays and guest houses available in Desa Wisata Teluk Buo, including Homestay and Camping Ground Kupibatigo Taluak Buo.<br>
+		There are several homestays and guest houses available in Desa Wisata Teluk Buo, including Homestay and Camping Ground Kupibatigo Teluk Buo.<br>
 		<strong>Tips:</strong><br>
 		Bring sunscreen, mosquito repellent lotion, and a hat. Don't forget to respect the local culture and environment.
 	  </div>
