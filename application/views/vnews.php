@@ -9,12 +9,12 @@
 			<?php echo validation_errors(); ?>
 			<?php if ($this->session->userdata("name") === Null):?>
 				<a href="<?php echo base_url(''); ?>">Home</a>
-				<a href="<?php echo base_url('taluak'); ?>">Taluak Buo</a>
+				<a href="<?php echo base_url('taluak'); ?>">Teluk Buo</a>
 				<a href="<?php echo base_url('wisata'); ?>">Desa Wisata</a>
 				<a href="<?php echo base_url('login'); ?>">Login</a>
 			<?php elseif ($this->session->userdata("name") === 'Alpha'):?>
 				<a href="<?php echo base_url(''); ?>">Home</a>
-				<a href="<?php echo base_url('taluak'); ?>">Taluak Buo</a>
+				<a href="<?php echo base_url('taluak'); ?>">Teluk Buo</a>
 				<a href="<?php echo base_url('wisata'); ?>">Desa Wisata</a>
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
 				<a href="<?php echo base_url('register/add'); ?>">Add User</a>
@@ -22,7 +22,7 @@
 				<a href="<?php echo base_url('login/logout'); ?>">Logout</a>
 			<?php else: ?>
 				<a href="<?php echo base_url(''); ?>">Home</a>
-				<a href="<?php echo base_url('taluak'); ?>">Taluak Buo</a>
+				<a href="<?php echo base_url('taluak'); ?>">Teluk Buo</a>
 				<a href="<?php echo base_url('wisata'); ?>">Desa Wisata</a>
 				<a href="<?php echo base_url('home'); ?>">Dashboard</a>
 				<a href="<?php echo base_url('news/add/news'); ?>">Add News</a>
@@ -31,7 +31,7 @@
 		</div>
 	</div>
 
-    <div class=shadowbox><h4>Desa Wista Taluak Buo</h4></div> 
+    <div class=shadowbox><h4>Desa Wista Teluk Buo</h4></div> 
 
 	<div class=container>
         <div class=row>
