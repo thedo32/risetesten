@@ -101,7 +101,7 @@
     <?php endif; ?>
 	
 	<?php $this->load->view('welcome_login');?>
-
+	<br><br>
 
 <script>
 

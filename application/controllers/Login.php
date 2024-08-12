@@ -4,8 +4,8 @@ class Login extends CI_Controller {
     
     function __construct() {
         parent::__construct();
-        $this->load->model('Mhome'); // Ensure the Mhome model is loaded - for hit count
-      	$this->load->model('Mlogin'); // Ensure the Mlogin model is loaded
+		$this->load->model('Mhome'); // Ensure the Mhome model is loaded - for hit count
+        $this->load->model('Mlogin'); // Ensure the Mlogin model is loaded
         $this->load->library('form_validation'); // Load form validation library
         $this->load->helper('form'); // Load form helper
         $this->load->library('session'); // Load session library
@@ -14,10 +14,42 @@ class Login extends CI_Controller {
 
     // Load index page
     function index() {
+
+		if ($this->session->userdata("name") !== Null){
+					// if already login Redirect to user home
+			redirect('home');
+		}
+
 		// Increment hit count
         $this->load->library('user_agent');
         $ip_address = $this->input->ip_address();
-        $referrer = $this->input->server('HTTP_REFERER');
+
+
+		if ($this->agent->is_browser())
+		{
+			$agent = $this->agent->browser().' '.$this->agent->version();
+		}
+		elseif ($this->agent->is_robot())
+		{
+			$agent = $this->agent->robot();
+		}
+		elseif ($this->agent->is_mobile())
+		{
+			$agent = $this->agent->mobile();
+		}
+		else
+		{
+        $agent = 'Unidentified User Agent';
+		}
+
+
+
+        if ($this->agent->is_referral())
+		{
+			$referrer = $this->agent->referrer();
+		}else{
+			$referrer = $this->input->server('HTTP_REFERER');
+		}
 
 
 		$utm_params = array(
@@ -32,7 +64,8 @@ class Login extends CI_Controller {
 
         $art_id = 0;
         $title = "Login Eng";
-        $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params);
+        $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params, $agent);
+
 
         $this->load->view('view_header');
         $this->load->view('vlogin');
