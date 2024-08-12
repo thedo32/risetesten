@@ -1,13 +1,17 @@
- 
-</head>  
+</head>
+
 <body class="bg-body">
+	<?php echo validation_errors(); ?>
     <div class=fix-navbar>
-		<div class=shadowbox><h3>Edit User</h3></div>
+		<div class=shadowbox><h3>Add User</h3></div>
         <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
-		
 		<div class=logged-in>
+			<?php if ($this->session->userdata("name") === 'Alpha' ):?>
 				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>
 				<a href="<?php echo base_url('login/logout'); ?>"class=h8>Logout</a>
+			<?php else:?> 
+				<a href="<?php echo base_url('login'); ?>"class=h7>Login</a>
+			<?php endif; ?>	
 		</div>
 
 		<div class=fix-menu>
@@ -87,31 +91,30 @@
 			</nav>
 		</div>
 	</div>
-	
 
 
-    <!-- form action style for editing a user -->
-    <form action="<?php echo base_url('register/edit/' . $user->id); ?>" method="post">
-        <table class=reg-table>
-			<tr>
+    <form action="<?php echo base_url('register/add'); ?>" method="post">
+    	
+		<table class=reg-table>
+			 <tr>
                 <td>Nama</td>
-                <td><input type="text" name="name" value="<?php echo set_value('name', $user->name); ?>" size="20"></td>
+                <td><input type="text" name="name" value="<?php echo set_value('name'); ?>" size="20" /></td>
             </tr>
             <tr>
                 <td>Username</td>
-                <td><input type="text" name="username" value="<?php echo set_value('username', $user->username); ?>" size="20" ></td>
+                <td><input type="text" name="username" value="<?php echo set_value('username'); ?>" size="20" /></td>
             </tr>
-            <tr>
+			<tr>
                 <td>Email</td>
-                <td><input type="text" name="email" value="<?php echo set_value('email', $user->email); ?>" size="50" ></td>
+                <td><input type="text" name="email" value="<?php echo set_value('email'); ?>" size="50" /></td>
             </tr>
 			<tr>
-				<td>Mobile</td>
-                <td><input type="text" name="mobile" value="<?php echo set_value('mobile', $user->mobile); ?>" size="25"></td>
+                <td>Mobile</td>
+                <td><input type="text" name="mobile" value="<?php echo set_value('mobile'); ?>" size="25" /></td>
             </tr>
-			<tr>
-				<td>Adrress</td>
-                <td><input type="text" name="address" value="<?php echo set_value('address', $user->address); ?>" size="100" ></td>
+			 <tr>
+                <td>Address</td>
+                <td><input type="text" name="address" value="<?php echo set_value('addres'); ?>" size="100" /></td>
             </tr>
             <tr>
                 <td>Password</td>
@@ -123,13 +126,17 @@
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Save Edit"></td>
-            </tr>
+                <td><input type="submit" value="Add User"></td>
+		    </tr>
+
         </table>
     </form>
-	<!-- Display validation errors -->
 	<?php echo validation_errors(); ?>
-	<br><br>
+
+		<?php // if ($this->session->tempdata('otp_error')): ?>
+			<!--	<p style="color: red;"><?php //echo $this->session->tempdata('otp_error'); ?></p> --> 
+		<?php //endif; ?>
+	 <br><br>
 
 <script>
 
@@ -137,4 +144,5 @@
 	shiftBelowRgTable();
 
 </script>
-	
+
+

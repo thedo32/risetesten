@@ -179,10 +179,10 @@ h6, .h6 {
 	padding: 40px 10px 15px 10px;
 	border-radius: 0 0 17px 17px;
 	background-color: white;
-	font-size: 1.3em;
+	font-size: 1.1em;
 }
 
-	.h7:hover {	
+	.h7:hover {
 		text-decoration: none;
 	}
 
@@ -211,7 +211,7 @@ h6, .h6 {
 	}
 
 .h10 {
-	z-index: 180;
+	z-index: 800;
 	font-family: 'Nanito',sans-serif;
 	padding: 5px 7px 5px 5px;
 	border-radius: 10px 0 0 10px;
@@ -220,6 +220,7 @@ h6, .h6 {
 	float: right;
 	text-align: center;
 }
+
 	.h10:hover {
 		text-decoration: none;
 	}
@@ -230,17 +231,29 @@ h6, .h6 {
 	float: right;
 	text-align: center;
 }
+
 	.h11:hover {
 		text-decoration: none;
 	}
 
 .h12 {
-	z-index:1002;
+	z-index: 1002;
 	font-family: 'Noto Serif',sans-serif;
 	font-size: 2.1em;
-	text-decoration:none;
+	text-decoration: none;
 }
+
 	.h12:hover {
+		text-decoration: none;
+	}
+
+.h13 {
+	z-index: 1002;
+	text-decoration: none;
+	color: black;
+}
+
+	.h13:hover {
 		text-decoration: none;
 	}
 
@@ -329,9 +342,9 @@ a {
 	color: var(--bs-link-color);
 	text-decoration: none;
 	padding: 0 5px 0 5px;
-	z-index:2000;
+	z-index: 2000;
 }
-	
+
 	a:hover {
 		color: var(--bs-link-hover-color);
 		font-weight: bold;
@@ -4323,6 +4336,37 @@ textarea.form-control-lg {
 	border-radius: 0.25rem;
 	transition: box-shadow 0.15s ease-in-out;
 }
+
+.custom-toggler .navbar-toggler-icon {
+	width: 40px; /* Adjust the width of the icon */
+	height: 3px; /* Adjust the height of the icon to make it bolder */
+	background-color: #000; /* Set the color of the dashes to black */
+	border-radius: 0; /* Ensure the dashes have sharp edges */
+	position: relative;
+}
+
+	.custom-toggler .navbar-toggler-icon::before,
+	.custom-toggler .navbar-toggler-icon::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 3px; /* Match this to the height of the icon to keep all dashes consistent */
+		background-color: #000; /* Set the color of the dashes to black */
+		border-radius: 0; /* Ensure the dashes have sharp edges */
+		position: absolute;
+		left: 0;
+	}
+
+	.custom-toggler .navbar-toggler-icon::before {
+		top: -9px; /* Shift the first dash up by 10px */
+	}
+
+	.custom-toggler .navbar-toggler-icon::after {
+		top: 9px; /* Adjust spacing between the original middle and bottom dashes */
+	}
+
+
+
 
 
 @media (prefers-reduced-motion: reduce) {
@@ -12600,11 +12644,11 @@ textarea.form-control-lg {
 	position: fixed; /* Fixed position */
 	bottom: 30px; /* Place the button at the bottom of the page */
 	right: 30px; /* Place the button 30px from the right */
-	z-index: 1000; /* Make sure it does not overlap */
+	z-index: 900; /* Make sure it does not overlap */
 	font-size: 28px; /* Increase font size */
 	border: none; /* Remove borders */
 	outline: none; /* Remove outline */
-	background-color: #dc35458c; /* Set a background color */
+	background-color: #dc3545aa; /* Set a background color */
 	color: white; /* Text color */
 	cursor: pointer; /* Add a mouse pointer on hover */
 	padding: 15px; /* Some padding */
@@ -12696,18 +12740,18 @@ textarea.form-control-lg {
 	overflow: hidden;
 	top: 0; /* Position the menu at the top right of the page */
 	width: 100%; /* Full width */
-	z-index: 99;
+	z-index: 999;
 }
 
 .fix-navbar {
-	padding: 10px 5px 0 10px;
+	padding: 10px 5px 0 30px;
 	margin-bottom: 50px;
 	position: fixed;
 	overflow: hidden;
-	background-image: url('/storage/app/public/images/bg/background1.png');
+	background-image: url('/storage/app/public/images/bg/background2.webp');
 	top: 0; /* Position the navbar at the top of the page */
 	width: 100%; /* Full width */
-	z-index: 99;
+	z-index: 999;
 }
 
 
@@ -12892,19 +12936,22 @@ img {
 
 /* Next & previous buttons */
 .prev, .next {
+	z-index: 1100;
 	cursor: pointer;
 	position: absolute;
 	top: 50%;
 	width: auto;
-	padding: 16px;
+	padding: 30px;
 	margin-top: -22px;
+	margin-left: 10px;
+	margin-right: 10px;
 	color: white;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 20px;
 	transition: 0.6s ease;
 	border-radius: 3px 0 0 3px;
 	user-select: none;
-	background-color: rgba(30,30,30,0.7);
+	background-color: rgba(30,30,30,0.4);
 }
 
 /* Position the "next button" to the right */
@@ -13012,6 +13059,7 @@ img {
 	width: 95%;
 }
 
+
 .user-table {
 	margin: 150px 0 0 50px;
 	transition: margin-top 1.5s;
@@ -13045,10 +13093,9 @@ img {
 
 .logged-in {
 	top: 25px;
-	margin-left: 85%;
+	margin-left: 82%;
 	position: fixed;
-	font-size: 0.8rem;
-	z-index: 201;
+	z-index: 2001;
 }
 
 .login-table {
@@ -13104,6 +13151,19 @@ img {
 		}
 
 
+.footer-table {
+	width: 100%;
+}
+
+	.footer-table td {
+		padding-right: 30px;
+		text-align: right;
+		border: none;
+		margin: 0 auto 0 auto;
+		border-radius: 25px;
+		background-color: #ffffff7a;
+	}
+
 
 .newsbox {
 	border: none;
@@ -13125,7 +13185,7 @@ img {
 		}*/
 
 .articlebox {
-	border:none;
+	border: none;
 	display: block;
 	border-radius: 10px;
 	padding: 5px 5px 5px 5px;
@@ -13196,7 +13256,7 @@ img {
 
 .shadowfooter {
 	padding: 10px;
-	background-image: url("/storage/app/public/images/bg/background1.png");
+	background-image: url("/storage/app/public/images/bg/background2.webp");
 	bottom: 0;
 	overflow: hidden;
 	width: 100%;
@@ -13418,7 +13478,7 @@ img {
 .md-title {
 	max-width: 360px;
 	height: 100px; /* Set a fixed height for the row */
-	font-size:23px;
+	font-size: 23px;
 	overflow: hidden;
 	margin-left: auto;
 	margin-right: auto;
@@ -13459,6 +13519,11 @@ img {
 
 .fa-facebook {
 	background: #3B5998;
+	color: white;
+}
+
+.fa-whatsapp {
+	background: #25D366;
 	color: white;
 }
 
@@ -13579,7 +13644,7 @@ img {
 		padding: 9px 17px;
 		text-decoration: none;
 		background-color: #d8f7ba33;
-		box-shadow:lightgrey 3px 3px;
+		box-shadow: lightgrey 3px 3px;
 		transition: background-color .3s;
 		border: 2px solid lightgrey; /* Border around each button */
 		margin: 0 6px 0 6px; /* Space between buttons */
@@ -13619,14 +13684,14 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: auto;
-	background-color: rgba(255, 255, 255, 0.65)
+	background-color: rgba(255, 255, 255, 0.75)
 }
 
 .popup-content {
 	position: relative;
 	margin: auto;
 	padding: 150px 5px 150px 5px;
-	width: 100%;
+	width: 90%;
 	max-width: 1300px;
 	text-align: center;
 }
@@ -13639,16 +13704,16 @@ body {
 
 .close-button {
 	position: fixed;
-	border:none;
-	border-radius:5px 5px 5px 5px;
-	background-color:#00000087;
+	border: none;
+	border-radius: 5px 5px 5px 5px;
+	background-color: #00000087;
 	top: 80px;
 	right: 15px;
 	font-size: 25px;
 	font-weight: bold;
 	color: white;
 	cursor: pointer;
-	padding:0 5px 2px 5px;
+	padding: 0 5px 2px 5px;
 }
 
 	.close-button:hover,

@@ -46,7 +46,7 @@ class Mpadang extends CI_Model {
 
     // Get news with pagination
     public function get_padang_padang($limit, $offset) {
-		$this->db->order_by('id', 'DESC');
+		$this->db->order_by('updated_at', 'DESC');
         $this->db->limit($limit, $offset);
         $query = $this->db->get('padangen');
         return $query->result_array();

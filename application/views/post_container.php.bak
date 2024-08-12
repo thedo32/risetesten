@@ -1,13 +1,13 @@
-<?php if ($this->session->userdata("name") === Null):
-	$name = " ";
-else:
-	$name = $this->session->userdata("name");
-endif; 
+	<?php if ($this->session->userdata("name") === Null):
+		$name = " ";
+	else:
+		$name = $this->session->userdata("name");
+	endif; 
+	
+	
+	$whatsappLink = "https://wa.me/62811663504?text=" . urlencode("Halo Kupi Batigo, Saya $name tertarik untuk menanyakan detail lebih lanjut");
 
-
-$whatsappLink = "https://wa.me/62811663504?text=" . urlencode("Hello Kupi Batigo, I am $name interested in asking for more details");
-
-?>
+	?>
 
 
 

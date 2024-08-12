@@ -16,7 +16,7 @@
 
 		<div class=fix-menu>
 			<nav class="navbar-expand-lg navbar-light">
-		  	<button class=" table navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
             </button>
      
@@ -114,7 +114,7 @@
             </tr>
 			 <tr>
                 <td>Address</td>
-                <td><input type="text" name="address" value="<?php echo set_value('addres'); ?>" size="100" /></td>
+                <td><input type="text" name="address" value="<?php echo set_value('addres'); ?>" size="80" /></td>
             </tr>
             <tr>
                 <td>Password</td>

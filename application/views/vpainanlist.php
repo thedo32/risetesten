@@ -36,7 +36,7 @@
 		
 		<div class=fix-menu>
 			<nav class="navbar-expand-lg navbar-light">
-		  	<button class=" table navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+		  	<button class=" table navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
             </button>
      
@@ -110,8 +110,20 @@
 		  // $this->load->view('side_post');
 	?>
 
+	<?php if ($this->session->userdata("name") === Null):
+		$name = " ";
+	else:
+		$name = $this->session->userdata("name");
+	endif; 
+	
+	
+	$whatsappLink = "https://wa.me/62811663504?text=" . urlencode("Hello Kupi Batigo, I am $name interested in asking for more details");
+
+	?>
+
 	<div class=h10> 
-		<a href="https://kopibatigo.id/">IDN</a><br>
+		<a href="https://kopibatigo.id/home">IDN</a><br>
+		<a href="<?php echo $whatsappLink; ?>" target=_blank class="fa fa-whatsapp"></a><br>
 		<a href="#" class="fa fa-instagram"></a><br>
 		<a href="#" class="fa fa-facebook"></a><br>
 	</div>
@@ -167,7 +179,7 @@
 								<td>
 									<div class="newsbox">
 										 <div class="md-title"><a href="<?php echo site_url('painan/view/' . $painan_list['slug']); ?>" title="<?php echo $painan_list['title']; ?>"><?php echo $painan_list['title']; ?></a></div><br>
-										 <a href="<?php echo site_url('painan/view/' . $painan_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $painan_list['title']; ?>"><img src= "<?php echo base_url($painan_list['cover']);?>" height="200" width="280" class=news-imgthumb ></a>
+										 <a href="<?php echo site_url('painan/view/' . $painan_list['slug']); ?>" data-toggle="tooltip" title="<?php echo $painan_list['title']; ?>"><img src= "<?php echo base_url($painan_list['cover']);?>" height="280" width="280" class=news-imgthumb ></a>
 										 <div class="sm-title"><?php echo character_limiter($painan_list['text'], 5); ?></div>
 									</div>
 								</td>
