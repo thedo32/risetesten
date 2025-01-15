@@ -3,7 +3,7 @@
 <body class="bg-body">
     <div class=fix-navbar>
 		<div class=shadowbox><h3>Edit User</h3></div>
-        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
+        <a alt="Menara" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" class=image-logo></a>
 		
 		<div class=logged-in>
 				  <a href="<?php echo base_url('home'); ?>" class=h8>Admin</a><br>

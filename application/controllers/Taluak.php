@@ -156,7 +156,7 @@ class Taluak extends CI_Controller {
 		}
 		else
 		{
-        $agent = 'Unidentified User Agent';
+        $agent = 'Other';
 		}
 
 
@@ -183,6 +183,36 @@ class Taluak extends CI_Controller {
         $art_id = 0;
         $title = "Tour";
         $this->Mhome->increment_hit_count($title, $user_id, $art_id, $ip_address, $referrer, $utm_params, $agent);
+
+
+		//$this->Mhome->bulk_update_coordinates();
+
+		// Get city and country based on IP address
+        require_once 'vendor/autoload.php';
+        $reader = new Reader('extension/db/GeoLite2-City.mmdb');
+        try {
+            $record = $reader->city($ip_address);
+            $data['city'] = $record->city->name;
+            $data['country'] = $record->country->name;
+			
+			// Get latitude and longitude
+			$data['lat'] = $record->location->latitude ?? 0;
+			$data['lon'] = $record->location->longitude ?? 0;
+
+			if  ($data['city'] == 'Unknown') { $data['city'] = 'Other'; }
+			if  ($data['country'] == 'Unknown') { $data['country'] = 'Other'; }
+
+			// error_log("IP: $ip_address, City: $city, Country: $country, Latitude: $latitude, Longitude: $longitude");
+
+
+        } catch (Exception $e) {
+			//error_log("GeoIP Error: " . $e->getMessage());
+
+            $data['city'] = 'Other';
+            $data['country'] = 'Other';
+			$data['lat'] = 0;
+			$data['lon'] = 0;
+        }
 
 
     // Pagination configuration
@@ -244,7 +274,7 @@ class Taluak extends CI_Controller {
 		}
 		else
 		{
-        $agent = 'Unidentified User Agent';
+        $agent = 'Other';
 		}
 
 
@@ -280,9 +310,11 @@ class Taluak extends CI_Controller {
             $record = $reader->city($ip_address);
             $data['city'] = $record->city->name;
             $data['country'] = $record->country->name;
+			if  ($data['city'] == 'Unknown') { $data['city'] = 'Other'; }
+			if  ($data['country'] == 'Unknown') { $data['country'] = 'Other'; }
         } catch (Exception $e) {
-            $data['city'] = 'Unknown';
-            $data['country'] = 'Unknown';
+            $data['city'] = 'Other';
+            $data['country'] = 'Other';
         }
 
 

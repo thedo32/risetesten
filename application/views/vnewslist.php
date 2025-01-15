@@ -20,7 +20,7 @@
 <body class="bg-body">
 	<?php echo validation_errors(); ?>
     <div class=fix-navbar>
-        <a alt="News Page" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" width = "110" height = "60"></a>
+        <a alt="News Page" href="<?php echo base_url('');?>"><img src="/storage/app/public/images/logo/logo.png" class=image-logo></a>
 		<div class=logged-in>
 		<?php if ($this->session->userdata("name") === 'Alpha' ):?>
 				  <a href="<?php echo base_url('home'); ?>" class=h7>Admin</a>

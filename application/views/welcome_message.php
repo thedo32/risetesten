@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	#container {
 		margin: 40px;
 		border: 1px solid #D0D0D0;
+		border-radius: 10px;
 		box-shadow: 0 0 8px #D0D0D0;
 	}
 	</style>
